@@ -1,5 +1,4 @@
-# encoding: utf-8
-
+# encoding: UTF-8
 require 'rubygems'
 require 'bundler'
 begin
@@ -12,35 +11,29 @@ end
 require 'rake'
 
 require 'jeweler'
+require './lib/correios/sro/version'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
   gem.name = "correios-sro-xml"
   gem.homepage = "http://github.com/prodis/correios-sro-xml"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{Sistema de Rastreamento de Objetos dos Correios (SRO)}
+  gem.description = %Q{Sistema de Rastreamento de Objetos dos Correios (SRO)}
   gem.email = "prodis@gmail.com"
-  gem.authors = ["Prodis"]
+  gem.authors = ["Prodis a.k.a. Fernando Hamasaki"]
+  gem.version = Correios::SRO::Version::VERSION
+  gem.required_ruby_version = ">= 1.8.7"
   # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new
 
-require 'rake/testtask'
-Rake::TestTask.new(:test) do |test|
-  test.libs << 'lib' << 'test'
-  test.pattern = 'test/**/test_*.rb'
-  test.verbose = true
+require 'rspec/core'
+require 'rspec/core/rake_task'
+RSpec::Core::RakeTask.new(:spec) do |spec|
+  spec.pattern = FileList['spec/**/*_spec.rb']
 end
 
-require 'rcov/rcovtask'
-Rcov::RcovTask.new do |test|
-  test.libs << 'test'
-  test.pattern = 'test/**/test_*.rb'
-  test.verbose = true
-  test.rcov_opts << '--exclude "gems/*"'
-end
-
-task :default => :test
+task :default => :spec
 
 require 'rdoc/task'
 Rake::RDocTask.new do |rdoc|
