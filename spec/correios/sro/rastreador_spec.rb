@@ -6,7 +6,10 @@ describe Correios::SRO::Rastreador do
     context "creates with default value of" do
       before(:each) { @sro = Correios::SRO::Rastreador.new }
 
-      { :tipo => :lista, :resultado => :ultimo }.each do |attr, value|
+      { :tipo => :lista,
+        :resultado => :ultimo,
+        :objetos => []
+      }.each do |attr, value|
         it attr do
           @sro.send(attr).should == value
         end
@@ -35,6 +38,14 @@ describe Correios::SRO::Rastreador do
   end
 
   describe "#consultar" do
+    before(:each) { @sro = Correios::SRO::Rastreador.new :usuario => "USUARIO", :senha => "SENHA" }
+
+    it "sets objetos" do
+      @sro.consultar("SQ458226057B", "RA132678652BR")
+      @sro.objetos.size.should == 2
+      @sro.objetos.first.should == "SQ458226057B"
+      @sro.objetos.last.should == "RA132678652BR"
+    end
   end
 end
 
