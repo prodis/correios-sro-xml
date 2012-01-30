@@ -1,6 +1,8 @@
 = correios-sro-xml
 
-Sistema de Rastreamento de Objetos dos Correios (SRO).
+Sistema de Rastreamento de Objetos dos Correios (SRO) utilizando o Web Service SRO XML, que permite a consulta de ate 50 encomendas simultaneamente.
+
+<b>Atenção:</b> esta gem já está funcional, mas ainda não é uma versão estável.
 
 == Instalando
 
@@ -15,9 +17,28 @@ Sistema de Rastreamento de Objetos dos Correios (SRO).
 
   require 'correios-sro-xml'
 
-  sro = Correios::SRO::Rastreador.new
+  sro = Correios::SRO::Rastreador.new :usuario => "ECT", :senha => "SRO"
 
-  # Ainda não foi implementado.
+Rastreamento de um objeto:
+
+  objeto = sro.consultar("SI047624825BR")
+  objeto.numero                  # => "SI047624825BR"
+  objeto.eventos.first.data      # => "26/12/2011"
+  objeto.eventos.first.local     # => "AC CENTRAL DE SAO PAULO"
+  objeto.eventos.first.descricao # => "Entregue"
+
+Rastreamento de vários objetos:
+  objetos = sro.consultar("SI047624825BR", "SX104110463BR")
+
+  objetos["SI047624825BR"].numero                  # => "SI047624825BR"
+  objetos["SI047624825BR"].eventos.first.data      # => "26/12/2011"
+  objetos["SI047624825BR"].eventos.first.local     # => "AC CENTRAL DE SAO PAULO"
+  objetos["SI047624825BR"].eventos.first.descricao # => "Entregue"
+
+  objetos["SX104110463BR"].numero                  # => "SX104110463BR"
+  objetos["SX104110463BR"].eventos.first.data      # => "08/12/2011"
+  objetos["SX104110463BR"].eventos.first.local     # => "CEE JUNDIAI"
+  objetos["SX104110463BR"].eventos.first.descricao # => "Entregue"
 
 
 == Autor

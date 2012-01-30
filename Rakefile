@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "correios-sro-xml"
   gem.homepage = "http://github.com/prodis/correios-sro-xml"
   gem.license = "MIT"
-  gem.summary = %Q{Sistema de Rastreamento de Objetos dos Correios (SRO)}
-  gem.description = %Q{Sistema de Rastreamento de Objetos dos Correios (SRO)}
+  gem.summary = %Q{Sistema de Rastreamento de Objetos dos Correios (SRO).}
+  gem.description = %Q{Sistema de Rastreamento de Objetos dos Correios (SRO) utilizando o Web Service SRO XML, que permite a consulta de ate 50 encomendas simultaneamente.}
   gem.email = "prodis@gmail.com"
   gem.authors = ["Prodis a.k.a. Fernando Hamasaki"]
   gem.version = Correios::SRO::Version::VERSION
@@ -42,5 +42,6 @@ Rake::RDocTask.new do |rdoc|
   rdoc.rdoc_dir = 'rdoc'
   rdoc.title = "correios-sro-xml #{version}"
   rdoc.rdoc_files.include('README*')
+  rdoc.rdoc_files.include('CHANGELOG*')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end

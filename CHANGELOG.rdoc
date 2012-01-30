@@ -1,0 +1,2 @@
+== Versão 0.0.1
+- Primeira versão funcional, mas ainda instável. 
