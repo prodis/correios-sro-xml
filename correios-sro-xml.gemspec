@@ -5,18 +5,19 @@
 
 Gem::Specification.new do |s|
   s.name = "correios-sro-xml"
-  s.version = "0.0.0"
+  s.version = "0.0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Prodis a.k.a. Fernando Hamasaki"]
-  s.date = "2012-01-28"
-  s.description = "Sistema de Rastreamento de Objetos dos Correios (SRO)"
+  s.date = "2012-01-30"
+  s.description = "Sistema de Rastreamento de Objetos dos Correios (SRO) utilizando o Web Service SRO XML, que permite a consulta de ate 50 encomendas simultaneamente."
   s.email = "prodis@gmail.com"
   s.extra_rdoc_files = [
     "README.rdoc"
   ]
   s.files = [
     ".rspec",
+    "CHANGELOG.rdoc",
     "Gemfile",
     "Gemfile.lock",
     "README.rdoc",
@@ -24,9 +25,15 @@ Gem::Specification.new do |s|
     "correios-sro-xml.gemspec",
     "lib/correios-sro-xml.rb",
     "lib/correios/sro.rb",
+    "lib/correios/sro/destino.rb",
+    "lib/correios/sro/evento.rb",
+    "lib/correios/sro/objeto.rb",
+    "lib/correios/sro/parser.rb",
     "lib/correios/sro/rastreador.rb",
     "lib/correios/sro/version.rb",
+    "lib/correios/sro/web_service.rb",
     "spec/correios/sro/rastreador_spec.rb",
+    "spec/correios/sro/web_service_spec.rb",
     "spec/spec_helper.rb"
   ]
   s.homepage = "http://github.com/prodis/correios-sro-xml"
@@ -34,7 +41,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
   s.required_ruby_version = Gem::Requirement.new(">= 1.8.7")
   s.rubygems_version = "1.8.11"
-  s.summary = "Sistema de Rastreamento de Objetos dos Correios (SRO)"
+  s.summary = "Sistema de Rastreamento de Objetos dos Correios (SRO)."
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
