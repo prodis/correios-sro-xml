@@ -6,7 +6,7 @@ module Correios
   module SRO
     class WebService
       URL = "http://websro.correios.com.br/sro_bin/sroii_xml.eventos"
-      TYPES = { :lista => "L", :intervalor => "F" }
+      TYPES = { :lista => "L", :intervalo => "F" }
       RESULTS = { :todos => "T", :ultimo => "U" }
 
       def initialize
