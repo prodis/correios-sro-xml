@@ -8,5 +8,12 @@ def fake_request_for(response)
 end
 
 def body_for(response)
-  response
+  case response
+  when :success_response_one_object
+    File.open(File.dirname(__FILE__) + "/responses/success-response-one-object.xml").read
+  when :success_response_many_objects
+    File.open(File.dirname(__FILE__) + "/responses/success-response-many-objects.xml").read
+  else
+    response
+  end
 end

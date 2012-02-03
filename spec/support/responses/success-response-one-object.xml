@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<sroxml>
+  <versao>1.0</versao>
+  <qtd>1</qtd>
+  <TipoPesquisa>Lista de Objetos</TipoPesquisa>
+  <TipoResultado>Todos os eventos</TipoResultado>
+  <objeto>
+    <numero>SI047624825BR</numero>
+    <evento>
+      <tipo>BDI</tipo>
+      <status>01</status>
+      <data>26/12/2011</data>
+      <hora>15:22</hora>
+      <descricao>Entregue</descricao>
+      <recebedor>                                                                        </recebedor>
+      <documento>                         </documento>
+      <comentario>?</comentario>
+      <local>AC CENTRAL DE SAO PAULO</local>
+      <codigo>01009972</codigo>
+      <cidade>SAO PAULO</cidade>
+      <uf>SP</uf>
+      <sto>00024419</sto>
+    </evento>
+    <evento>
+      <tipo>LDI</tipo>
+      <status>01</status>
+      <data>24/12/2011</data>
+      <hora>12:14</hora>
+      <descricao>Aguardando retirada</descricao>
+      <local>AC CENTRAL DE SAO PAULO</local>
+      <codigo>01009972</codigo>
+      <cidade>SAO PAULO</cidade>
+      <uf>SP</uf>
+      <sto>00024419</sto>
+    </evento>
+    <evento>
+      <tipo>RO</tipo>
+      <status>01</status>
+      <data>24/12/2011</data>
+      <hora>06:26</hora>
+      <descricao>Encaminhado</descricao>
+      <local>CTE VILA MARIA</local>
+      <codigo>02170975</codigo>
+      <cidade>SAO PAULO</cidade>
+      <uf>SP</uf>
+      <sto>72626003</sto>
+      <destino>
+        <local>CDD SE</local>
+        <codigo>01009970</codigo>
+        <cidade>SAO PAULO</cidade>
+        <bairro>CENTRO</bairro>
+        <uf>SP</uf>
+      </destino>
+    </evento>
+    <evento>
+      <tipo>RO</tipo>
+      <status>01</status>
+      <data>23/12/2011</data>
+      <hora>17:12</hora>
+      <descricao>Encaminhado</descricao>
+      <local>AC JUNDIAI</local>
+      <codigo>13201970</codigo>
+      <cidade>JUNDIAI</cidade>
+      <uf>SP</uf>
+      <sto>74302043</sto>
+      <destino>
+        <local>CTE VILA MARIA</local>
+        <codigo>02170975</codigo>
+        <cidade>SAO PAULO</cidade>
+        <bairro>PQ NOVO MUNDO</bairro>
+        <uf>SP</uf>
+      </destino>
+    </evento>
+    <evento>
+      <tipo>PO</tipo>
+      <status>00</status>
+      <data>23/12/2011</data>
+      <hora>11:36</hora>
+      <descricao>Postado</descricao>
+      <local>AC JUNDIAI</local>
+      <codigo>13201970</codigo>
+      <cidade>JUNDIAI</cidade>
+      <uf>SP</uf>
+      <sto>74302043</sto>
+    </evento>
+  </objeto>
+</sroxml>
