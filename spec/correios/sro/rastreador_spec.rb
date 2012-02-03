@@ -38,7 +38,10 @@ describe Correios::SRO::Rastreador do
   end
 
   describe "#consultar" do
-    before(:each) { @sro = Correios::SRO::Rastreador.new :usuario => "USUARIO", :senha => "SENHA" }
+    before :each do
+      fake_request_for :success_response_many_objects
+      @sro = Correios::SRO::Rastreador.new :usuario => "USUARIO", :senha => "SENHA"
+    end
 
     it "sets objetos" do
       @sro.consultar("SQ458226057B", "RA132678652BR")
