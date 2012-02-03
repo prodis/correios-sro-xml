@@ -19,6 +19,12 @@ module Correios
       element :uf
       element :sto
       element :destino, :class => Correios::SRO::Destino
+
+      [:recebedor, :documento, :comentario].each do |method|
+        define_method "#{method}=" do |value|
+          instance_variable_set("@#{method}", value.to_s.strip)
+        end
+      end
     end
   end
 end
