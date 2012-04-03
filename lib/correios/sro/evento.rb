@@ -9,6 +9,7 @@ module Correios
       element :tipo
       element :status
       element :data
+      element :hora
       element :descricao
       element :recebedor
       element :documento
