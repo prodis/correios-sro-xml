@@ -24,6 +24,7 @@ Rastreamento de um objeto:
   objeto = sro.consultar("SI047624825BR")
   objeto.numero                  # => "SI047624825BR"
   objeto.eventos.first.data      # => "26/12/2011"
+  objeto.eventos.first.hora      # => "15:22"
   objeto.eventos.first.local     # => "AC CENTRAL DE SAO PAULO"
   objeto.eventos.first.descricao # => "Entregue"
 
@@ -32,11 +33,13 @@ Rastreamento de vários objetos:
 
   objetos["SI047624825BR"].numero                  # => "SI047624825BR"
   objetos["SI047624825BR"].eventos.first.data      # => "26/12/2011"
+  objetos["SI047624825BR"].eventos.first.hora      # => "15:22"
   objetos["SI047624825BR"].eventos.first.local     # => "AC CENTRAL DE SAO PAULO"
   objetos["SI047624825BR"].eventos.first.descricao # => "Entregue"
 
   objetos["SX104110463BR"].numero                  # => "SX104110463BR"
   objetos["SX104110463BR"].eventos.first.data      # => "08/12/2011"
+  objetos["SX104110463BR"].eventos.first.hora      # => "09:30"
   objetos["SX104110463BR"].eventos.first.local     # => "CEE JUNDIAI"
   objetos["SX104110463BR"].eventos.first.descricao # => "Entregue"
 
@@ -44,6 +47,8 @@ Rastreamento de vários objetos:
 == Autor
 - {Fernando Hamasaki (prodis)}[http://prodis.blog.br]
 
+== Colaboradores
+- {Thiago Ganzarolli (tganzarolli)}[https://github.com/tganzarolli]
 
 == Contributing to correios-sro-xml
  

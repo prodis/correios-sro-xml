@@ -1,2 +1,5 @@
+== Versão 0.0.2
+- Melhoria: {Issue #1: Incluindo campo hora}[https://github.com/prodis/correios-sro-xml/pull/1].
+
 == Versão 0.0.1
 - Primeira versão funcional, mas ainda instável. 

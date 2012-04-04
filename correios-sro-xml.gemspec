@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "correios-sro-xml"
-  s.version = "0.0.1"
+  s.version = "0.0.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Prodis a.k.a. Fernando Hamasaki"]
-  s.date = "2012-01-30"
+  s.date = "2012-04-04"
   s.description = "Sistema de Rastreamento de Objetos dos Correios (SRO) utilizando o Web Service SRO XML, que permite a consulta de ate 50 encomendas simultaneamente."
   s.email = "prodis@gmail.com"
   s.extra_rdoc_files = [
@@ -32,15 +32,20 @@ Gem::Specification.new do |s|
     "lib/correios/sro/rastreador.rb",
     "lib/correios/sro/version.rb",
     "lib/correios/sro/web_service.rb",
+    "spec/correios/sro/evento_spec.rb",
+    "spec/correios/sro/parser_spec.rb",
     "spec/correios/sro/rastreador_spec.rb",
     "spec/correios/sro/web_service_spec.rb",
-    "spec/spec_helper.rb"
+    "spec/spec_helper.rb",
+    "spec/support/fake_request.rb",
+    "spec/support/responses/success-response-many-objects.xml",
+    "spec/support/responses/success-response-one-object.xml"
   ]
   s.homepage = "http://github.com/prodis/correios-sro-xml"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.required_ruby_version = Gem::Requirement.new(">= 1.8.7")
-  s.rubygems_version = "1.8.11"
+  s.rubygems_version = "1.8.16"
   s.summary = "Sistema de Rastreamento de Objetos dos Correios (SRO)."
 
   if s.respond_to? :specification_version then
@@ -48,33 +53,30 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<log-me>, ["~> 0.0.2"])
-      s.add_runtime_dependency(%q<nokogiri>, ["~> 1.5.0"])
-      s.add_runtime_dependency(%q<sax-machine>, ["~> 0.1.0"])
-      s.add_development_dependency(%q<bundler>, ["~> 1.0"])
+      s.add_runtime_dependency(%q<nokogiri>, ["~> 1.5"])
+      s.add_runtime_dependency(%q<sax-machine>, ["~> 0.1"])
       s.add_development_dependency(%q<fakeweb>, ["~> 1.3"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.8"])
-      s.add_development_dependency(%q<rspec>, ["~> 2.8"])
+      s.add_development_dependency(%q<rspec>, ["~> 2.9"])
       s.add_development_dependency(%q<ruby-debug>, [">= 0"])
       s.add_development_dependency(%q<ruby-debug19>, [">= 0"])
     else
       s.add_dependency(%q<log-me>, ["~> 0.0.2"])
-      s.add_dependency(%q<nokogiri>, ["~> 1.5.0"])
-      s.add_dependency(%q<sax-machine>, ["~> 0.1.0"])
-      s.add_dependency(%q<bundler>, ["~> 1.0"])
+      s.add_dependency(%q<nokogiri>, ["~> 1.5"])
+      s.add_dependency(%q<sax-machine>, ["~> 0.1"])
       s.add_dependency(%q<fakeweb>, ["~> 1.3"])
       s.add_dependency(%q<jeweler>, ["~> 1.8"])
-      s.add_dependency(%q<rspec>, ["~> 2.8"])
+      s.add_dependency(%q<rspec>, ["~> 2.9"])
       s.add_dependency(%q<ruby-debug>, [">= 0"])
       s.add_dependency(%q<ruby-debug19>, [">= 0"])
     end
   else
     s.add_dependency(%q<log-me>, ["~> 0.0.2"])
-    s.add_dependency(%q<nokogiri>, ["~> 1.5.0"])
-    s.add_dependency(%q<sax-machine>, ["~> 0.1.0"])
-    s.add_dependency(%q<bundler>, ["~> 1.0"])
+    s.add_dependency(%q<nokogiri>, ["~> 1.5"])
+    s.add_dependency(%q<sax-machine>, ["~> 0.1"])
     s.add_dependency(%q<fakeweb>, ["~> 1.3"])
     s.add_dependency(%q<jeweler>, ["~> 1.8"])
-    s.add_dependency(%q<rspec>, ["~> 2.8"])
+    s.add_dependency(%q<rspec>, ["~> 2.9"])
     s.add_dependency(%q<ruby-debug>, [">= 0"])
     s.add_dependency(%q<ruby-debug19>, [">= 0"])
   end
