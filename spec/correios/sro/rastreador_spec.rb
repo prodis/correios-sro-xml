@@ -50,19 +50,4 @@ describe Correios::SRO::Rastreador do
       @sro.objetos.last.should == "RA132678652BR"
     end
   end
-  
-  describe "#consultar_international" do
-    before :each do
-      fake_request_for :success_international
-      @sro = Correios::SRO::Rastreador.new :usuario => "USUARIO", :senha => "SENHA", :resultado => :todos
-    end
-
-    it "sets objetos" do
-      objeto = @sro.consultar("EC688801478US")
-      @sro.objetos.size.should == 1
-      @sro.objetos.first.should == "EC688801478US"
-      objeto.eventos.size.should == 6
-    end
-  end  
 end
-
