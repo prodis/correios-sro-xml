@@ -1,5 +1,8 @@
+== Versão 0.0.4
+- Correção: Lugar de encode é no Parser e não no WebService.
+
 == Versão 0.0.3
-- Melhoria: {Issue #2: Problema de encoding}[https://github.com/prodis/correios-sro-xml/pull/2].
+- Correção: {Issue #2: Problema de encoding}[https://github.com/prodis/correios-sro-xml/pull/2].
 
 == Versão 0.0.2
 - Melhoria: {Issue #1: Incluindo campo hora}[https://github.com/prodis/correios-sro-xml/pull/1].
