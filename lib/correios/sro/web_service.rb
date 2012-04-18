@@ -15,7 +15,7 @@ module Correios
 
       def request(sro)
         response = Net::HTTP.post_form(@uri, params_for(sro))
-        response.body.backward_encode("UTF-8", "ISO-8859-1")
+        response.body
       end
 
       private

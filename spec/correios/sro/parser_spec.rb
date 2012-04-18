@@ -3,19 +3,24 @@ require 'spec_helper'
 
 describe Correios::SRO::Parser do
   describe "#objetos" do
-    before :each do
-      xml = body_for :success_response_many_objects
-      parser = Correios::SRO::Parser.new
-      @objetos = parser.objetos(xml)
+    let(:xml) { body_for :success_response_many_objects }
+    let(:parser) { Correios::SRO::Parser.new }
+
+    it "encodes from ISO-8859-1 to UTF-8" do
+      xml.should_receive(:backward_encode).with("UTF-8", "ISO-8859-1").and_return(xml)
+      parser.objetos(xml)
     end
 
     ["SI047624825BR", "SX104110463BR"].each do |number|
       it "returns object number" do
-        @objetos[number].numero.should == number
+        objetos = parser.objetos(xml)
+        objetos[number].numero.should == number
       end
     end
 
     context "returns event" do
+      before(:each) { @objetos = parser.objetos(xml) }
+
       { "SI047624825BR" => {
           :tipo => "BDI",
           :status => "01",
@@ -57,6 +62,8 @@ describe Correios::SRO::Parser do
     end
 
     context "returns destination" do
+      before(:each) { @objetos = parser.objetos(xml) }
+
       { "SI047624825BR" => {
           :local => "CTE VILA MARIA",
           :codigo => "02170975",
