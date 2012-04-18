@@ -13,8 +13,8 @@ def body_for(response)
     File.open(File.dirname(__FILE__) + "/responses/success-response-one-object.xml").read
   when :success_response_many_objects
     File.open(File.dirname(__FILE__) + "/responses/success-response-many-objects.xml").read
-  when :success_international
-    File.open(File.dirname(__FILE__) + "/responses/success-international.xml").read
+  when :success_response_many_objects_international
+    File.open(File.dirname(__FILE__) + "/responses/success-response-many-objects-international.xml").read
   else
     response
   end
