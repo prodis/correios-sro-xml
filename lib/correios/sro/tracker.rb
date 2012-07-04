@@ -1,12 +1,12 @@
 # encoding: UTF-8
 module Correios
   module SRO
-    class Rastreador
-      attr_accessor :usuario, :senha
-      attr_accessor :tipo, :resultado
-      attr_reader :objetos
+    class Tracker
+      attr_accessor :user, :password
+      attr_accessor :result_type, :result_mode
+      attr_reader :object_numbers
 
-      DEFAULT_OPTIONS = { :tipo => :lista, :resultado => :ultimo }
+      DEFAULT_OPTIONS = { :result_type => :list, :result_mode => :last }
 
       def initialize(options = {})
         DEFAULT_OPTIONS.merge(options).each do |attr, value|
@@ -14,13 +14,13 @@ module Correios
         end
 
         yield self if block_given?
-        @objetos = []
+        @object_numbers = []
       end
 
-      def consultar(*object_numbers)
-        @objetos = object_numbers
+      def get(*object_numbers)
+        @object_numbers = object_numbers
         response = web_service.request(self)
-        objects = parser.objetos(response)
+        objects = parser.objects(response)
 
         if objects.size == 1
           objects.values.first

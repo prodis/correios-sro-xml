@@ -1,6 +1,6 @@
 = correios-sro-xml
 
-Sistema de Rastreamento de Objetos dos Correios (SRO) utilizando o Web Service SRO XML, que permite a consulta de ate 50 encomendas simultaneamente.
+Sistema de Rastreamento de Objetos dos Correios (SRO) utilizando o Web Service SRO XML, que permite a consulta de até 50 encomendas simultaneamente.
 
 <b>Atenção:</b> esta gem já está funcional, mas ainda não é uma versão estável.
 
@@ -17,31 +17,31 @@ Sistema de Rastreamento de Objetos dos Correios (SRO) utilizando o Web Service S
 
   require 'correios-sro-xml'
 
-  sro = Correios::SRO::Rastreador.new :usuario => "ECT", :senha => "SRO"
+  sro = Correios::SRO::Tracker.new(:user => "ECT", :password => "SRO")
 
 Rastreamento de um objeto:
 
-  objeto = sro.consultar("SI047624825BR")
-  objeto.numero                  # => "SI047624825BR"
-  objeto.eventos.first.data      # => "26/12/2011"
-  objeto.eventos.first.hora      # => "15:22"
-  objeto.eventos.first.local     # => "AC CENTRAL DE SAO PAULO"
-  objeto.eventos.first.descricao # => "Entregue"
+  object = sro.get("SI047624825BR")
+  object.number                   # => "SI047624825BR"
+  object.events.first.date        # => "26/12/2011"
+  object.events.first.hour        # => "15:22"
+  object.events.first.place       # => "AC CENTRAL DE SAO PAULO"
+  object.events.first.description # => "Entregue"
 
 Rastreamento de vários objetos:
-  objetos = sro.consultar("SI047624825BR", "SX104110463BR")
+  objects = sro.get("SI047624825BR", "SX104110463BR")
 
-  objetos["SI047624825BR"].numero                  # => "SI047624825BR"
-  objetos["SI047624825BR"].eventos.first.data      # => "26/12/2011"
-  objetos["SI047624825BR"].eventos.first.hora      # => "15:22"
-  objetos["SI047624825BR"].eventos.first.local     # => "AC CENTRAL DE SAO PAULO"
-  objetos["SI047624825BR"].eventos.first.descricao # => "Entregue"
+  objects["SI047624825BR"].number                   # => "SI047624825BR"
+  objects["SI047624825BR"].events.first.date        # => "26/12/2011"
+  objects["SI047624825BR"].events.first.hour        # => "15:22"
+  objects["SI047624825BR"].events.first.place       # => "AC CENTRAL DE SAO PAULO"
+  objects["SI047624825BR"].events.first.description # => "Entregue"
 
-  objetos["SX104110463BR"].numero                  # => "SX104110463BR"
-  objetos["SX104110463BR"].eventos.first.data      # => "08/12/2011"
-  objetos["SX104110463BR"].eventos.first.hora      # => "09:30"
-  objetos["SX104110463BR"].eventos.first.local     # => "CEE JUNDIAI"
-  objetos["SX104110463BR"].eventos.first.descricao # => "Entregue"
+  objects["SX104110463BR"].number                   # => "SX104110463BR"
+  objects["SX104110463BR"].events.first.date        # => "08/12/2011"
+  objects["SX104110463BR"].events.first.hour        # => "09:30"
+  objects["SX104110463BR"].events.first.place       # => "CEE JUNDIAI"
+  objects["SX104110463BR"].events.first.description # => "Entregue"
 
 
 == Autor
