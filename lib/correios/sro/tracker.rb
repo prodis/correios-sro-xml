@@ -19,7 +19,7 @@ module Correios
 
       def get(*object_numbers)
         @object_numbers = object_numbers
-        response = web_service.request(self)
+        response = web_service.request!
         objects = parser.objects(response)
 
         if objects.size == 1
@@ -32,7 +32,7 @@ module Correios
       private
 
       def web_service
-        @web_service ||= Correios::SRO::WebService.new
+        @web_service ||= Correios::SRO::WebService.new(self)
       end
 
       def parser

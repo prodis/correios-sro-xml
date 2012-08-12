@@ -32,6 +32,12 @@ describe Correios::SRO::Tracker do
   end
 
   describe "#get" do
+    around do |example|
+      Correios::SRO.configure { |config| config.log_enabled = false }
+      example.run
+      Correios::SRO.configure { |config| config.log_enabled = true }
+    end
+
     before :each do
       fake_request_for :success_response_many_objects
       @sro = Correios::SRO::Tracker.new(:user => "PRODIS", :password => "pim321")
