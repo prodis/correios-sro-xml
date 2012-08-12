@@ -39,7 +39,7 @@ describe Correios::SRO::Tracker do
     end
 
     before :each do
-      fake_request_for :success_response_many_objects
+      mock_request_for :success_response_many_objects
       @sro = Correios::SRO::Tracker.new(:user => "PRODIS", :password => "pim321")
     end
 

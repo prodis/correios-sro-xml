@@ -13,7 +13,7 @@ describe Correios::SRO::WebService do
     let(:web_service) { Correios::SRO::WebService.new(tracker) }
 
     it "returns XML response" do
-      fake_request_for("<xml><fake></fake>")
+      mock_request_for("<xml><fake></fake>")
       web_service.request!.should eql "<xml><fake></fake>"
     end
   end
