@@ -30,6 +30,7 @@ module Correios
 
       def build_http
         http = Net::HTTP.new(@uri.host, @uri.port)
+        http.open_timeout = Correios::SRO.request_timeout
         http
       end
 
