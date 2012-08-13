@@ -22,7 +22,7 @@ module Correios
         response = web_service.request!
         objects = parser.objects(response)
 
-        if objects.size == 1
+        if @object_numbers.size == 1
           objects.values.first
         else
           objects
