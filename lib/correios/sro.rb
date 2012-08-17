@@ -6,7 +6,7 @@ module Correios
     extend LogMe
 
     module Timeout
-      DEFAULT_REQUEST_TIMEOUT = 10 #seconds
+      DEFAULT_REQUEST_TIMEOUT = 5 #seconds
       attr_writer :request_timeout
 
       def request_timeout

@@ -3,8 +3,8 @@ require 'spec_helper'
 
 describe Correios::SRO do
   describe "#request_timeout" do
-    it "default is 10" do
-      Correios::SRO.request_timeout.should eql 10
+    it "default is 5" do
+      Correios::SRO.request_timeout.should eql 5
     end
 
     context "when set timeout" do
@@ -14,8 +14,8 @@ describe Correios::SRO do
       end
 
       it "returns timeout in seconds (integer)" do
-        Correios::SRO.configure { |config| config.request_timeout = 5.123 }
-        Correios::SRO.request_timeout.should eql 5
+        Correios::SRO.configure { |config| config.request_timeout = 2.123 }
+        Correios::SRO.request_timeout.should eql 2
       end
     end
   end
