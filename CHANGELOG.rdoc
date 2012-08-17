@@ -1,11 +1,17 @@
-== Versão 0.0.4
-- Correção: Lugar de encode é no Parser e não no WebService.
+== Version 0.1.0
+- Warning: Compatibility break with version 0.0.4.
+- New: Public interface only in English language.
+- New: Log support.
+- New: Request timeout configuration.
 
-== Versão 0.0.3
-- Correção: {Issue #2: Problema de encoding}[https://github.com/prodis/correios-sro-xml/pull/2].
+== Version 0.0.4
+- Fix: The correct place to encode is in Parser, not WebService.
 
-== Versão 0.0.2
-- Melhoria: {Issue #1: Incluindo campo hora}[https://github.com/prodis/correios-sro-xml/pull/1].
+== Version 0.0.3
+- Fix: {Issue #2: Problema de encoding}[https://github.com/prodis/correios-sro-xml/pull/2].
 
-== Versão 0.0.1
-- Primeira versão funcional, mas ainda instável. 
+== Version 0.0.2
+- Improvement: {Issue #1: Incluindo campo hora}[https://github.com/prodis/correios-sro-xml/pull/1].
+
+== Version 0.0.1
+- First version, unstable yet.
