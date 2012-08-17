@@ -2,7 +2,7 @@
 
 Tracking Objects System from Correios - SRO (Sistema de Rastreamento de Objetos dos Correios), using SRO XML Web Service, that allows to query up to 50 orders simultaneously.
 
-{http://prodis.net.br/images/ruby/2011/correios_logo.png}[http://prodis.net.br/images/ruby/2011/correios_logo.png]
+http://prodis.net.br/images/ruby/2011/correios_logo.png
 
 In order to use SRO XML in production environment, it is necessary to request to Correios access data (user and password) for your company, as described in {Correios' Blog}[http://blog.correios.com.br/comercioeletronico/?p=218].
 
@@ -211,7 +211,7 @@ To disable the log, change log level and configure other log output, use <b>Corr
 
 {Prodis a.k.a. Fernando Hamasaki}[http://prodis.blog.br]
 
-{http://prodis.net.br/images/prodis_150.gif}[http://prodis.net.br/images/prodis_150.gif]
+http://prodis.net.br/images/prodis_150.gif
 
 Copyright (c) 2012 Prodis
 
