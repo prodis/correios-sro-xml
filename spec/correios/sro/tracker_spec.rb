@@ -5,14 +5,14 @@ describe Correios::SRO::Tracker do
   describe ".new" do
     it "creates with default values" do
       sro = Correios::SRO::Tracker.new
-      sro.result_type.should == :list
+      sro.query_type.should == :list
       sro.result_mode.should == :last
       sro.object_numbers.should == []
     end
 
     { :user => "PRODIS",
       :password => "pim321",
-      :result_type => :interval,
+      :query_type => :range,
       :result_mode => :all
     }.each do |attr, value|
       context "when #{attr} is supplied" do

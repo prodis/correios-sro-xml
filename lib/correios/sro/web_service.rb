@@ -6,7 +6,7 @@ module Correios
   module SRO
     class WebService
       URL = "http://websro.correios.com.br/sro_bin/sroii_xml.eventos"
-      RESULT_TYPES = { :list => "L", :interval => "F" }
+      QUERY_TYPES = { :list => "L", :range => "F" }
       RESULT_MODES = { :all => "T", :last => "U" }
 
       def initialize(tracker)
@@ -44,7 +44,7 @@ module Correios
         {
           :Usuario => @tracker.user,
           :Senha => @tracker.password,
-          :Tipo => RESULT_TYPES[@tracker.result_type],
+          :Tipo => QUERY_TYPES[@tracker.query_type],
           :Resultado => RESULT_MODES[@tracker.result_mode],
           :Objetos => @tracker.object_numbers.join
         }

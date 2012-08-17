@@ -3,10 +3,10 @@ module Correios
   module SRO
     class Tracker
       attr_accessor :user, :password
-      attr_accessor :result_type, :result_mode
+      attr_accessor :query_type, :result_mode
       attr_reader :object_numbers
 
-      DEFAULT_OPTIONS = { :result_type => :list, :result_mode => :last }
+      DEFAULT_OPTIONS = { :query_type => :list, :result_mode => :last }
 
       def initialize(options = {})
         DEFAULT_OPTIONS.merge(options).each do |attr, value|
