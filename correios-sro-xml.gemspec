@@ -9,7 +9,7 @@ Gem::Specification.new do |gem|
   gem.email       = ["prodis@gmail.com"]
   gem.summary     = "Tracking Objects System from Correios - SRO (Sistema de Rastreamento de Objetos dos Correios)."
   gem.description = "Tracking Objects System from Correios - SRO (Sistema de Rastreamento de Objetos dos Correios), using SRO XML Web Service, that allows to query up to 50 orders simultaneously."
-  gem.homepage    = "http://github.com/prodis/correios-sro-xml"
+  gem.homepage    = "http://prodis.blog.br/2012/08/17/correios-sro-xml-gem-para-rastreamento-de-objetos-dos-correios"
   gem.licenses    = ["MIT"]
 
   gem.files         = `git ls-files`.split($\)
