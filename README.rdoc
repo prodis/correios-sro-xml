@@ -213,7 +213,7 @@ To disable the log, change log level and configure other log output, use <b>Corr
 
 http://prodis.net.br/images/prodis_150.gif
 
-Copyright (c) 2012 Prodis
+Copyright (c) 2012-2014 Prodis
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
