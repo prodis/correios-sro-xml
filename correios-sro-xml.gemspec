@@ -1,30 +1,33 @@
-# -*- encoding: utf-8 -*-
-$:.push File.expand_path('../lib', __FILE__)
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'correios/sro/version'
 
-Gem::Specification.new do |gem|
-  gem.name        = "correios-sro-xml"
-  gem.version     = Correios::SRO::VERSION
-  gem.authors     = ["Prodis a.k.a. Fernando Hamasaki"]
-  gem.email       = ["prodis@gmail.com"]
-  gem.summary     = "Tracking Objects System from Correios - SRO (Sistema de Rastreamento de Objetos dos Correios)."
-  gem.description = "Tracking Objects System from Correios - SRO (Sistema de Rastreamento de Objetos dos Correios), using SRO XML Web Service, that allows to query up to 50 orders simultaneously."
-  gem.homepage    = "http://prodis.blog.br/2012/08/17/correios-sro-xml-gem-para-rastreamento-de-objetos-dos-correios"
-  gem.licenses    = ["MIT"]
+Gem::Specification.new do |spec|
+  spec.name        = "correios-sro-xml"
+  spec.version     = Correios::SRO::VERSION
+  spec.authors     = ["Prodis a.k.a. Fernando Hamasaki de Amorim"]
+  spec.email       = ["prodis@gmail.com"]
+  spec.summary     = "Tracking Objects System from Correios - SRO (Sistema de Rastreamento de Objetos dos Correios)."
+  spec.description = "Tracking Objects System from Correios - SRO (Sistema de Rastreamento de Objetos dos Correios), using SRO XML Web Service, that allows to query up to 50 orders simultaneously."
+  spec.homepage    = "http://prodis.blog.br/2012/08/17/correios-sro-xml-gem-para-rastreamento-de-objetos-dos-correios"
+  spec.licenses    = ["MIT"]
 
-  gem.files         = `git ls-files`.split($\)
-  gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
-  gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
-  gem.require_paths = ["lib"]
+  spec.files         = `git ls-files`.split($\)
+  spec.executables   = spec.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
+  spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
+  spec.require_paths = ["lib"]
 
-  gem.platform              = Gem::Platform::RUBY
-  gem.required_ruby_version = Gem::Requirement.new(">= 1.8.7")
+  spec.platform              = Gem::Platform::RUBY
+  spec.required_ruby_version = Gem::Requirement.new(">= 1.9.3")
 
-  gem.add_dependency "log-me",      "~> 0.0.4"
-  gem.add_dependency "nokogiri",    "~> 1.5"
-  gem.add_dependency "sax-machine", "~> 0.1"
+  spec.add_dependency "log-me",   "= 0.0.6"
+  spec.add_dependency "nokogiri", "~> 1.6"
+  spec.add_dependency "sax-machine", "~> 0.2.1"
 
-  gem.add_development_dependency "rake"
-  gem.add_development_dependency "rspec",   "~> 2.11"
-  gem.add_development_dependency "webmock", "~> 1.8"
+  spec.add_development_dependency "coveralls"
+  spec.add_development_dependency "pry"
+  spec.add_development_dependency "rake"
+  spec.add_development_dependency "rspec",   "~> 2.14"
+  spec.add_development_dependency "vcr",     "~> 2.8"
+  spec.add_development_dependency "webmock", "~> 1.15.2"
 end
