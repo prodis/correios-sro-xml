@@ -1,4 +1,3 @@
-# encoding: UTF-8
 require 'spec_helper'
 
 describe Correios::SRO::WebService do
@@ -9,12 +8,15 @@ describe Correios::SRO::WebService do
       Correios::SRO.configure { |config| config.log_enabled = true }
     end
 
-    let(:tracker) { Correios::SRO::Tracker.new }
-    let(:web_service) { Correios::SRO::WebService.new(tracker) }
+    let(:tracker) do
+      sro = Correios::SRO::Tracker.new(user: "ECT", password: "SRO")
+      sro.instance_variable_set :@object_numbers, ["SS123456789BR"]
+      sro
+    end
+    let(:subject) { Correios::SRO::WebService.new(tracker) }
 
-    it "returns XML response" do
-      mock_request_for("<xml><fake></fake>")
-      web_service.request!.should eql "<xml><fake></fake>"
+    it "returns XML response", vcr: { cassette_name: "sro_found_last" } do
+      expect(subject.request!).to include("<numero>SS123456789BR</numero>")
     end
   end
 end
