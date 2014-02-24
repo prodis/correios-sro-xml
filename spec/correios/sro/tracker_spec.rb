@@ -1,31 +1,29 @@
-# encoding: UTF-8
 require 'spec_helper'
 
 describe Correios::SRO::Tracker do
   describe ".new" do
     it "creates with default values" do
-      sro = Correios::SRO::Tracker.new
-      sro.query_type.should == :list
-      sro.result_mode.should == :last
-      sro.object_numbers.should == []
+      expect(subject.query_type).to eql :list
+      expect(subject.result_mode).to eql :last
+      expect(subject.object_numbers).to eql []
     end
 
-    { :user => "PRODIS",
-      :password => "pim321",
-      :query_type => :range,
-      :result_mode => :all
+    { user: "PRODIS",
+      password: "pim321",
+      query_type: :range,
+      result_mode: :all
     }.each do |attr, value|
       context "when #{attr} is supplied" do
         it "sets #{attr}" do
           sro = Correios::SRO::Tracker.new(attr => value)
-          sro.send(attr).should == value
+          expect(sro.send(attr)).to eql value
         end
       end
 
       context "when #{attr} is supplied in a block" do
         it "sets #{attr}" do
           sro = Correios::SRO::Tracker.new { |t| t.send("#{attr}=", value) }
-          sro.send(attr).should == value
+          expect(sro.send(attr)).to eql value
         end
       end
     end
@@ -38,77 +36,76 @@ describe Correios::SRO::Tracker do
       Correios::SRO.configure { |config| config.log_enabled = true }
     end
 
-    let(:sro) { Correios::SRO::Tracker.new(:user => "PRODIS", :password => "pim321") }
+    let(:subject)  { Correios::SRO::Tracker.new(user: "PRODIS", password: "pim321") }
+    let(:response) { "" }
+    before { Correios::SRO::WebService.any_instance.stub(:request!).and_return(response) }
 
     context "to many objects" do
-      before(:each) { mock_request_for(:success_response_many_objects) }
+      let(:response) { Fixture.load :sro_many_objects }
 
       it "sets objects numbers" do
-        sro.get("SI047624825BR", "SX104110463BR")
-        sro.object_numbers.size.should == 2
-        sro.object_numbers.first.should == "SI047624825BR"
-        sro.object_numbers.last.should == "SX104110463BR"
-      end
+        subject.get("SI047624825BR", "SX104110463BR")
 
-      it "creates a WebService with correct params" do
-        web_service = Correios::SRO::WebService.new(sro)
-        Correios::SRO::WebService.should_receive(:new).with(sro).and_return(web_service)
-        sro.get("SI047624825BR", "SX104110463BR")
+        expect(subject.object_numbers.size).to eql 2
+        expect(subject.object_numbers.first).to eql "SI047624825BR"
+        expect(subject.object_numbers.last).to eql "SX104110463BR"
       end
 
       it "returns all objects" do
-        objects = sro.get("SI047624825BR", "SX104110463BR")
-        objects.size.should == 2
-        objects["SI047624825BR"].number.should == "SI047624825BR"
-        objects["SX104110463BR"].number.should == "SX104110463BR"
+        objects = subject.get("SI047624825BR", "SX104110463BR")
+
+        expect(objects.size).to eql 2
+
+        expect(objects["SI047624825BR"].number).to eql "SI047624825BR"
+        expect(objects["SI047624825BR"].events.first.description).to eql "Entregue"
+
+        expect(objects["SX104110463BR"].number).to eql "SX104110463BR"
+        expect(objects["SX104110463BR"].events.first.description).to eql "Entregue"
       end
 
       context "when only one object found" do
-        before(:each) { mock_request_for(:success_response_one_object) }
+        let(:response) { Fixture.load :sro_one_object }
 
         it "returns a Hash" do
-          objects = sro.get("SI047624825BR", "SX104110463BR")
-          objects.should be_an_instance_of Hash
+          objects = subject.get("SI047624825BR", "SX104110463BR")
+          expect(objects).to be_an_instance_of Hash
         end
 
         it "returns the object found" do
-          objects = sro.get("SI047624825BR", "SX104110463BR")
-          objects.size.should == 1
-          objects["SI047624825BR"].number.should == "SI047624825BR"
+          objects = subject.get("SI047624825BR", "SX104110463BR")
+
+          expect(objects.size).to eql 1
+          expect(objects["SI047624825BR"].number).to eql "SI047624825BR"
+          expect(objects["SI047624825BR"].events.first.description).to eql "Entregue"
         end
 
         it "returns nil in object not found" do
-          objects = sro.get("SI047624825BR", "SX104110463BR")
-          objects["SX104110463BR"].should be_nil
+          objects = subject.get("SI047624825BR", "SX104110463BR")
+          expect(objects["SX104110463BR"]).to be_nil
         end
       end
     end
 
     context "to one object" do
-      before(:each) { mock_request_for(:success_response_one_object) }
+      let(:response) { Fixture.load :sro_one_object }
 
       it "sets object number" do
-        sro.get("SI047624825BR")
-        sro.object_numbers.size.should == 1
-        sro.object_numbers.first.should == "SI047624825BR"
-      end
-
-      it "creates a WebService with correct params" do
-        web_service = Correios::SRO::WebService.new(sro)
-        Correios::SRO::WebService.should_receive(:new).with(sro).and_return(web_service)
-        sro.get("SI047624825BR")
+        subject.get("SI047624825BR")
+        expect(subject.object_numbers.size).to eql 1
+        expect(subject.object_numbers.first).to eql "SI047624825BR"
       end
 
       it "returns only one object" do
-        object = sro.get("SI047624825BR")
-        object.number.should == "SI047624825BR"
+        object = subject.get("SI047624825BR")
+        expect(object.number).to eql "SI047624825BR"
+        expect(object.events.first.description).to eql "Entregue"
       end
 
       context "when object not found" do
+        let(:response) { Fixture.load :sro_not_found }
+
         it "returns nil" do
-          mock_request_for(:failure_response_not_found)
-          object = sro.get("SI047624825BR")
-          object.should be_nil
+          expect(subject.get("SI047624825BR")).to be_nil
         end
       end
     end
