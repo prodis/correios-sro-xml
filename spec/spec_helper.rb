@@ -1,6 +1,7 @@
 require 'correios-sro-xml'
 require 'coveralls'
 require 'vcr'
+require 'support/fixture'
 
 Coveralls.wear!
 
