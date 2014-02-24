@@ -1,4 +1,3 @@
-# encoding: UTF-8
 module Correios
   module SRO
     class Tracker
@@ -6,7 +5,7 @@ module Correios
       attr_accessor :query_type, :result_mode
       attr_reader :object_numbers
 
-      DEFAULT_OPTIONS = { :query_type => :list, :result_mode => :last }
+      DEFAULT_OPTIONS = { query_type: :list, result_mode: :last }.freeze
 
       def initialize(options = {})
         DEFAULT_OPTIONS.merge(options).each do |attr, value|
