@@ -5,7 +5,7 @@ module Correios
     class Parser
       def objects(xml)
         objects = {}
-        xml = xml.backward_encode("UTF-8", "ISO-8859-1")
+        xml.encode!("UTF-8", "ISO-8859-1")
 
         doc = Nokogiri::XML(xml)
         doc.xpath("//objeto").each do |element|

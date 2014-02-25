@@ -5,7 +5,7 @@ describe Correios::SRO::Parser do
     let(:xml) { Fixture.load :sro_many_objects }
 
     it "encodes from ISO-8859-1 to UTF-8" do
-      xml.should_receive(:backward_encode).with("UTF-8", "ISO-8859-1").and_return(xml)
+      expect(xml).to receive(:encode!).with("UTF-8", "ISO-8859-1")
       subject.objects(xml)
     end
 
