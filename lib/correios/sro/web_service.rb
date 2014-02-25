@@ -1,4 +1,3 @@
-# encoding: UTF-8
 require 'net/http'
 require 'uri'
 
@@ -6,8 +5,8 @@ module Correios
   module SRO
     class WebService
       URL = "http://websro.correios.com.br/sro_bin/sroii_xml.eventos"
-      QUERY_TYPES = { :list => "L", :range => "F" }
-      RESULT_MODES = { :all => "T", :last => "U" }
+      QUERY_TYPES =  { list: "L", range: "F" }
+      RESULT_MODES = { all:  "T", last:  "U" }
 
       def initialize(tracker)
         @uri = URI.parse(URL)
@@ -42,11 +41,11 @@ module Correios
 
       def request_params
         {
-          :Usuario => @tracker.user,
-          :Senha => @tracker.password,
-          :Tipo => QUERY_TYPES[@tracker.query_type],
-          :Resultado => RESULT_MODES[@tracker.result_mode],
-          :Objetos => @tracker.object_numbers.join
+          Usuario: @tracker.user,
+          Senha: @tracker.password,
+          Tipo: QUERY_TYPES[@tracker.query_type],
+          Resultado: RESULT_MODES[@tracker.result_mode],
+          Objetos: @tracker.object_numbers.join
         }
       end
 
