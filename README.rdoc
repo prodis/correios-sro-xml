@@ -23,7 +23,7 @@ For development environment you can use follow access data:
 
   require 'correios-sro-xml'
 
-  sro = Correios::SRO::Tracker.new(:user => "ECT", :password => "SRO")
+  sro = Correios::SRO::Tracker.new(user: "ECT", password: "SRO")
 
 Tracking a single object:
   object = sro.get("SI047624825BR")
@@ -89,7 +89,7 @@ For default, the timeout for a request to SRO XML Web Service is <b>5 seconds</b
 You can configure this timeout using <b>Correios::SRO</b> module.
 
   Correios::SRO.configure do |config|
-    config.request_timeout = 3  # It configures timeout to 3 seconds
+    config.request_timeout = 3 # It configures timeout to 3 seconds
   end
 
 === Log
@@ -97,11 +97,11 @@ You can configure this timeout using <b>Correios::SRO</b> module.
 For default, each request to SRO XML Web service is logged to STDOUT, with <b>:info</b> log level, using the gem {LogMe}[http://github.com/prodis/log-me].
 
 Log example:
-  I, [2012-08-17T00:55:10.531780 #22692]  INFO -- : Correios-SRO-XML Request:
+  I, [2012-08-17T00:55:10.531780 #22692]  INFO -- : [Correios::SRO] Request:
   POST http://websro.correios.com.br/sro_bin/sroii_xml.eventos
   Usuario=ECT&Senha=SRO&Tipo=L&Resultado=U&Objetos=PB996681660BR
 
-  I, [2012-08-17T00:55:10.750308 #22692]  INFO -- : Correios-SRO-XML Response:
+  I, [2012-08-17T00:55:10.750308 #22692]  INFO -- : [Correios::SRO] Response:
   HTTP/1.1 200 OK
   <?xml version="1.0" encoding="iso-8859-1" ?>
   <sroxml>
@@ -129,66 +129,22 @@ Log example:
        </objeto>
   </sroxml>
 
-If you configure log level to <b>:debug</b>, request and response HTTP headers will be logged too.
-  D, [2012-08-17T00:58:56.226742 #22692] DEBUG -- : Correios-SRO-XML Request:
-  POST http://websro.correios.com.br/sro_bin/sroii_xml.eventos
-  accept: */*
-  user-agent: Ruby
-  content-type: application/x-www-form-urlencoded
-  Usuario=ECT&Senha=SRO&Tipo=L&Resultado=U&Objetos=PB996681660BR
-
-  D, [2012-08-17T00:58:56.495131 #22692] DEBUG -- : Correios-SRO-XML Response:
-  HTTP/1.1 200 OK
-  date: Fri, 17 Aug 2012 03:58:56 GMT
-  server: Oracle-Application-Server-10g/10.1.2.0.2 Oracle-HTTP-Server
-  content-length: 855
-  content-type: text/html; charset=ISO-8859-1
-  x-cache: MISS from 127.0.0.1
-  connection: close
-  <?xml version="1.0" encoding="iso-8859-1" ?>
-  <sroxml>
-     <versao>1.0</versao>
-     <qtd>1</qtd>
-     <TipoPesquisa>Lista de Objetos</TipoPesquisa>
-     <TipoResultado>?ltimo evento</TipoResultado>
-       <objeto>
-         <numero>PB996681660BR</numero>
-         <evento>
-            <tipo>BDE</tipo>
-            <status>01</status>
-            <data>05/07/2012</data>
-            <hora>21:11</hora>
-            <descricao>Entregue</descricao>
-            <recebedor>                         </recebedor>
-            <documento>                         </documento>
-            <comentario>                         </comentario>
-            <local>CDD VILA ANDRADE</local>
-            <codigo>05724970</codigo>
-            <cidade>SAO PAULO</cidade>
-            <uf>SP</uf>
-            <sto>72824000</sto>
-        </evento>
-       </objeto>
-  </sroxml>
-
-To disable the log, change log level and configure other log output, use <b>Correios::SRO</b> module:
+To disable the log and configure other log output, use <b>Correios::SRO</b> module:
 
   Correios::SRO.configure do |config|
     config.log_enabled = false   # It disables the log
-    config.log_level = :debug    # It changes log level
     config.logger = Rails.logger # It uses Rails logger
   end
 
 === Configuration example
 
   Correios::SRO.configure do |config|
-    config.log_level = :debug
     config.logger = Rails.logger
     config.request_timeout = 3
   end
 
 == Author
-- {Fernando Hamasaki (prodis)}[http://prodis.blog.br]
+- {Fernando Hamasaki de Amorim (prodis)}[http://prodis.blog.br]
 
 == Collaborators
 - {Thiago Ganzarolli (tganzarolli)}[https://github.com/tganzarolli]
