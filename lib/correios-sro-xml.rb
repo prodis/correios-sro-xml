@@ -1,4 +1,5 @@
 require 'rubygems'
+require 'correios/sro/timeout'
 require 'correios/sro'
 require 'correios/sro/destination'
 require 'correios/sro/event'
