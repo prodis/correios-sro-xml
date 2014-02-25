@@ -1,4 +1,3 @@
-# encoding: UTF-8
 require 'sax-machine'
 
 module Correios

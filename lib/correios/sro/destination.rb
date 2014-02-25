@@ -1,4 +1,3 @@
-# encoding: UTF-8
 require 'sax-machine'
 
 module Correios
@@ -6,7 +5,7 @@ module Correios
     class Destination
       include SAXMachine
 
-      element :local,  :as => :place 
+      element :local,  :as => :place
       element :codigo, :as => :code
       element :cidade, :as => :city
       element :bairro, :as => :neighborhood
