@@ -1,3 +1,8 @@
+== Version 0.2.0
+- Warning: Minimal required Ruby version from now is 1.9.3.
+- Improvement: Update LogMe gem to version 0.0.6 with support to log request and response messages.
+- Maintenance: Refactory all classes.
+
 == Version 0.1.1
 - Maintenance: Update .gemspec info.
 
