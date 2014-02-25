@@ -4,6 +4,12 @@ Tracking Objects System from Correios - SRO (Sistema de Rastreamento de Objetos 
 
 http://prodis.net.br/images/ruby/2011/correios_logo.png
 
+{<img src="https://badge.fury.io/rb/correios-sro-xml.png" alt="Gem Version" />}[http://badge.fury.io/rb/correios-sro-xml]
+{<img src="https://travis-ci.org/prodis/correios-sro-xml.png?branch=master" alt="Build Status" />}[https://travis-ci.org/prodis/correios-sro-xml]
+{<img src="https://coveralls.io/repos/prodis/correios-sro-xml/badge.png" alt="Coverage Status" />}[https://coveralls.io/r/prodis/correios-sro-xml]
+{<img src="https://codeclimate.com/github/prodis/correios-sro-xml.png" alt="Code Climate" />}[https://codeclimate.com/github/prodis/correios-sro-xml]
+{<img src="https://gemnasium.com/prodis/correios-sro-xml.png" alt="Dependency Status" />}[https://gemnasium.com/prodis/correios-sro-xml]
+
 In order to use SRO XML in production environment, it is necessary to request to Correios access data (user and password) for your company, as described in {Correios' Blog}[http://blog.correios.com.br/comercioeletronico/?p=218].
 
 For development environment you can use follow access data:
