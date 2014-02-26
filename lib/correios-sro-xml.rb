@@ -1,3 +1,4 @@
+require 'correios/sro/access_data'
 require 'correios/sro/timeout'
 require 'correios/sro'
 require 'correios/sro/destination'

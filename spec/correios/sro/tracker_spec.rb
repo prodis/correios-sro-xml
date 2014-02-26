@@ -8,6 +8,27 @@ describe Correios::SRO::Tracker do
       expect(subject.object_numbers).to eql []
     end
 
+    context "when access data is supplied on configuration" do
+      around do |example|
+        Correios::SRO.configure do |config|
+          config.user = "SROUSER"
+          config.password = "1q2w3e"
+        end
+
+        example.run
+
+        Correios::SRO.configure do |config|
+          config.user = nil
+          config.password = nil
+        end
+      end
+
+      it "uses access data from configuration" do
+        expect(subject.user).to eql "SROUSER"
+        expect(subject.password).to eql "1q2w3e"
+      end
+    end
+
     { user: "PRODIS",
       password: "pim321",
       query_type: :range,

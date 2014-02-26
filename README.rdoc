@@ -87,13 +87,22 @@ In which you supplie the first and last objects numbers of an interval.
   objects = sro.get("PB996681660BR", "PB996681700BR")
   objects.keys # => ["PB996681660BR", "PB996681673BR", "PB996681687BR", "PB996681695BR", "PB996681700BR"]
 
+
 == Configurations
+
+Use <b>Correios::SRO</b> module to set all available gem configuration.
+
+=== Access data
+
+You can supply SRO XML Web Service user and password in configuration instead of each instance of <b>Correios::SRO::Tracker</b> class.
+  Correios::SRO.configure do |config|
+    config.user = "ECT"
+    config.password = "SRO"
+  end
 
 === Timeout
 
 For default, the timeout for a request to SRO XML Web Service is <b>5 seconds</b>. If SRO XML Web Service does not respond, a <b>Timeout::Error</b> exception will be raised.
-You can configure this timeout using <b>Correios::SRO</b> module.
-
   Correios::SRO.configure do |config|
     config.request_timeout = 3 # It configures timeout to 3 seconds
   end
@@ -135,8 +144,7 @@ Log example:
        </objeto>
   </sroxml>
 
-To disable the log and configure other log output, use <b>Correios::SRO</b> module:
-
+You can disable the log and configure other log output.
   Correios::SRO.configure do |config|
     config.log_enabled = false   # It disables the log
     config.logger = Rails.logger # It uses Rails logger
@@ -145,6 +153,8 @@ To disable the log and configure other log output, use <b>Correios::SRO</b> modu
 === Configuration example
 
   Correios::SRO.configure do |config|
+    config.user = "ECT"
+    config.password = "SRO"
     config.logger = Rails.logger
     config.request_timeout = 3
   end

@@ -14,6 +14,8 @@ module Correios
 
         yield self if block_given?
         @object_numbers = []
+
+        set_attributes_from_config!
       end
 
       def get(*object_numbers)
@@ -29,6 +31,12 @@ module Correios
       end
 
       private
+
+      def set_attributes_from_config!
+        [:user, :password].each do |attr|
+          self.send("#{attr}=", Correios::SRO.send(attr)) unless self.send(attr)
+        end
+      end
 
       def web_service
         @web_service ||= Correios::SRO::WebService.new(self)
