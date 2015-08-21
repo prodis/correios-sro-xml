@@ -19,7 +19,7 @@ module Correios
       end
 
       def get(*object_numbers)
-        @object_numbers = object_numbers
+        @object_numbers = object_numbers.flatten
         response = web_service.request!
         objects = parser.objects(response)
 
