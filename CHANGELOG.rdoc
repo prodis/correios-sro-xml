@@ -1,3 +1,6 @@
+== Version 0.3.0
+- New: {Pull Request #3: Added support to Correios::SRO::Tracker#get to accept a list as argument}[https://github.com/prodis/correios-sro-xml/pull/3].
+
 == Version 0.2.1
 - New: User and password can be set on configuration.
 
@@ -19,10 +22,10 @@
 - Fix: The correct place to encode is in Parser, not WebService.
 
 == Version 0.0.3
-- Fix: {Issue #2: Problema de encoding}[https://github.com/prodis/correios-sro-xml/pull/2].
+- Fix: {Pull Request #2: Problema de encoding}[https://github.com/prodis/correios-sro-xml/pull/2].
 
 == Version 0.0.2
-- Improvement: {Issue #1: Incluindo campo hora}[https://github.com/prodis/correios-sro-xml/pull/1].
+- Improvement: {Pull Request #1: Incluindo campo hora}[https://github.com/prodis/correios-sro-xml/pull/1].
 
 == Version 0.0.1
 - First version, unstable yet.
