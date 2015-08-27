@@ -64,6 +64,12 @@ describe Correios::SRO::Tracker do
     context "to many objects" do
       let(:response) { Fixture.load :sro_many_objects }
 
+      it "accepts a list as argument" do
+        objects = subject.get(["SI047624825BR", "SX104110463BR"])
+
+        expect(objects.size).to eql 2
+      end
+
       it "sets objects numbers" do
         subject.get("SI047624825BR", "SX104110463BR")
 
