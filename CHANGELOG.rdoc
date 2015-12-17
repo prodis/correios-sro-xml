@@ -1,3 +1,6 @@
+== Version 0.3.1
+- Improvement: Update LogMe gem to version 0.0.10.
+
 == Version 0.3.0
 - New: {Pull Request #3: Added support to Correios::SRO::Tracker#get to accept a list as argument}[https://github.com/prodis/correios-sro-xml/pull/3].
 
