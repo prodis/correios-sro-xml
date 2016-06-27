@@ -5,11 +5,10 @@ module Correios
     class Parser
       def objects(xml)
         objects = {}
-        xml.encode!("UTF-8", "ISO-8859-1")
 
-        doc = Nokogiri::XML(xml)
-        doc.xpath("//objeto").each do |element|
+        Nokogiri::XML(xml).xpath("//objeto").each do |element|
           object = Correios::SRO::Object.parse(element.to_xml)
+          return objects if object.has_error?
           objects[object.number] = object
         end
 

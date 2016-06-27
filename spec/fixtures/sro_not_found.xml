@@ -1,6 +1,17 @@
-<?xml version="1.0" encoding="iso-8859-1" ?>
-<sroxml>
-  <versao>1.0</versao>
-  <error>Objetos não encontrados</error>
-</sroxml>
-
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header>
+      <X-OPNET-Transaction-Trace:X-OPNET-Transaction-Trace xmlns:X-OPNET-Transaction-Trace="http://opnet.com">pid=156890,requestid=e757ab15ed0f0c3c8adb8ce9d23b376a3cdbcc5311d0d89e</X-OPNET-Transaction-Trace:X-OPNET-Transaction-Trace>
+   </soapenv:Header>
+   <soapenv:Body>
+      <ns2:buscaEventosListaResponse xmlns:ns2="http://resource.webservice.correios.com.br/">
+         <return>
+            <versao>2.0</versao>
+            <qtd>1</qtd>
+            <objeto>
+               <numero>XDG257670520BR</numero>
+               <erro>Objeto não encontrado na base de dados dos Correios.</erro>
+            </objeto>
+         </return>
+      </ns2:buscaEventosListaResponse>
+   </soapenv:Body>
+</soapenv:Envelope>
