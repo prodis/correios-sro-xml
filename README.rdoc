@@ -163,6 +163,7 @@ You can disable the log and configure other log output.
 - {Fernando Hamasaki de Amorim (prodis)}[http://prodis.blog.br]
 
 == Collaborators
+- {Lennon Manchester (lemanchester)}[https://github.com/lemanchester]
 - {Thiago Ganzarolli (tganzarolli)}[https://github.com/tganzarolli]
 
 == Contributing to correios-sro-xml
