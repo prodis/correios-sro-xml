@@ -10,6 +10,9 @@ http://prodis.net.br/images/ruby/2011/correios_logo.png
 {<img src="https://codeclimate.com/github/prodis/correios-sro-xml.png" alt="Code Climate" />}[https://codeclimate.com/github/prodis/correios-sro-xml]
 {<img src="https://gemnasium.com/prodis/correios-sro-xml.png" alt="Dependency Status" />}[https://gemnasium.com/prodis/correios-sro-xml]
 
+== Warning
+  Previous versions of version 0.4.0 don't work anymore. See issue #4 for more details.
+
 In order to use SRO XML in production environment, it is necessary to request to Correios access data (user and password) for your company, as described in {Correios' Blog}[http://blog.correios.com.br/comercioeletronico/?p=218].
 
 For development environment you can use follow access data:
@@ -164,6 +167,7 @@ You can disable the log and configure other log output.
 
 == Collaborators
 - {Lennon Manchester (lemanchester)}[https://github.com/lemanchester]
+- {Rinaldi Fonseca (rinaldifonseca)}[https://github.com/rinaldifonseca]
 - {Thiago Ganzarolli (tganzarolli)}[https://github.com/tganzarolli]
 
 == Contributing to correios-sro-xml
