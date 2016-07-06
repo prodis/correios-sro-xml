@@ -2,10 +2,24 @@
 http_interactions:
 - request:
     method: post
-    uri: http://websro.correios.com.br/sro_bin/sroii_xml.eventos
+    uri: http://webservice.correios.com.br/service/rastro
     body:
-      encoding: US-ASCII
-      string: Usuario=ECT&Senha=SRO&Tipo=L&Resultado=U&Objetos=SS123456789BR
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0"?>
+        <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:res="http://resource.webservice.correios.com.br/">
+          <soapenv:Header/>
+          <soapenv:Body>
+            <res:buscaEventosLista>
+              <usuario>ECT</usuario>
+              <senha>SRO</senha>
+              <tipo>L</tipo>
+              <resultado>U</resultado>
+              <lingua>101</lingua>
+              <objetos>SS123456789BR</objetos>
+            </res:buscaEventosLista>
+          </soapenv:Body>
+        </soapenv:Envelope>
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -14,44 +28,38 @@ http_interactions:
       User-Agent:
       - Ruby
       Content-Type:
-      - application/x-www-form-urlencoded
+      - text/xml
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Mon, 24 Feb 2014 01:12:34 GMT
-      Server:
-      - Oracle-Application-Server-10g/10.1.2.0.2 Oracle-HTTP-Server
+      - Mon, 27 Jun 2016 13:10:36 GMT
+      X-Powered-By:
+      - Servlet/3.0
+      X-Opnet-Transaction-Trace:
+      - a2_05669c39-8570-4f65-b8b8-3c2c86883d68
       Content-Length:
-      - '850'
+      - '1093'
+      Set-Cookie:
+      - _op_aixPageId=a2_05669c39-8570-4f65-b8b8-3c2c86883d68; Path=/
+      Expires:
+      - Thu, 01 Dec 1994 16:00:00 GMT
+      Cache-Control:
+      - no-cache="set-cookie, set-cookie2"
       Content-Type:
-      - text/html; charset=ISO-8859-1
-      X-Cache:
-      - MISS from 127.0.0.1
+      - text/xml; charset=UTF-8
+      Content-Language:
+      - pt-BR
     body:
-      encoding: ASCII-8BIT
-      string: !binary |-
-        PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSIgPz4K
-        PHNyb3htbD4KICAgPHZlcnNhbz4xLjA8L3ZlcnNhbz4KICAgPHF0ZD4xPC9x
-        dGQ+CiAgIDxUaXBvUGVzcXVpc2E+TGlzdGEgZGUgT2JqZXRvczwvVGlwb1Bl
-        c3F1aXNhPgogICA8VGlwb1Jlc3VsdGFkbz7abHRpbW8gZXZlbnRvPC9UaXBv
-        UmVzdWx0YWRvPgogICAgIDxvYmpldG8+CiAgICAgICA8bnVtZXJvPlNTMTIz
-        NDU2Nzg5QlI8L251bWVybz4KICAgICAgIDxldmVudG8+CiAgICAgICAgICA8
-        dGlwbz5STzwvdGlwbz4KICAgICAgICAgIDxzdGF0dXM+MDE8L3N0YXR1cz4K
-        ICAgICAgICAgIDxkYXRhPjE3LzA5LzIwMTM8L2RhdGE+CiAgICAgICAgICA8
-        aG9yYT4xMzo0ODwvaG9yYT4KICAgICAgICAgIDxkZXNjcmljYW8+RW5jYW1p
-        bmhhZG88L2Rlc2NyaWNhbz4KICAgICAgICAgIDxsb2NhbD5MQUJPUkFUT1JJ
-        TzAxLVNST0lJL0NFPC9sb2NhbD4KICAgICAgICAgIDxjb2RpZ28+NjAwMDA5
-        MDE8L2NvZGlnbz4KICAgICAgICAgIDxjaWRhZGU+Rk9SVEFMRVpBPC9jaWRh
-        ZGU+CiAgICAgICAgICA8dWY+Q0U8L3VmPgogICAgICAgICAgPHN0bz45OTk5
-        OTk5OTwvc3RvPgogICAgICAgPGRlc3Rpbm8+CiAgICAgICAgICA8bG9jYWw+
-        TEFCT1JBVE9SSU8wMi1TUk9JSS9DRTwvbG9jYWw+CiAgICAgICAgICA8Y29k
-        aWdvPjYwMDAwOTAyPC9jb2RpZ28+CiAgICAgICAgICA8Y2lkYWRlPkZPUlRB
-        TEVaQTwvY2lkYWRlPgogICAgICAgICAgPGJhaXJybz5BTERFT1RBPC9iYWly
-        cm8+CiAgICAgICAgICA8dWY+Q0U8L3VmPgogICAgICAgPC9kZXN0aW5vPgog
-        ICAgICA8L2V2ZW50bz4KICAgICA8L29iamV0bz4KPC9zcm94bWw+Cg==
-    http_version: 
-  recorded_at: Mon, 24 Feb 2014 01:12:40 GMT
-recorded_with: VCR 2.8.0
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="UTF-8"?><soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Header><X-OPNET-Transaction-Trace:X-OPNET-Transaction-Trace
+        xmlns:X-OPNET-Transaction-Trace="http://opnet.com">pid=135270,requestid=0ba77bf1a686bb8ac2d2956daab521c191713276963afdd8</X-OPNET-Transaction-Trace:X-OPNET-Transaction-Trace></soapenv:Header><soapenv:Body><ns2:buscaEventosListaResponse
+        xmlns:ns2="http://resource.webservice.correios.com.br/"><return><versao>2.0</versao><qtd>1</qtd><objeto><numero>SS123456789BR</numero><sigla>DG</sigla><nome>ENCOMENDA
+        SEDEX (ETIQ LOGICA)</nome><categoria>SEDEX</categoria><evento><tipo>RO</tipo><status>01</status><data>25/06/2016</data><hora>08:54</hora><descricao>Objeto
+        encaminhado </descricao><local>CDD JOAO MONLEVADE</local><codigo>35930971</codigo><cidade>Joao
+        Monlevade</cidade><uf>MG</uf><destino><local>AC ALVINOPOLIS</local><codigo>35950970</codigo><cidade>Alvinopolis</cidade><bairro>Centro</bairro><uf>MG</uf></destino></evento></objeto></return></ns2:buscaEventosListaResponse></soapenv:Body></soapenv:Envelope>
+    http_version:
+  recorded_at: Mon, 27 Jun 2016 13:10:38 GMT
+recorded_with: VCR 2.9.3

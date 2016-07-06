@@ -4,11 +4,6 @@ describe Correios::SRO::Parser do
   describe "#objects" do
     let(:xml) { Fixture.load :sro_many_objects }
 
-    it "encodes from ISO-8859-1 to UTF-8" do
-      expect(xml).to receive(:encode!).with("UTF-8", "ISO-8859-1")
-      subject.objects(xml)
-    end
-
     ["SI047624825BR", "SX104110463BR"].each do |number|
       it "returns object number" do
         objects = subject.objects(xml)
@@ -22,11 +17,11 @@ describe Correios::SRO::Parser do
       { "SI047624825BR" => {
           type: "BDI",
           status: "01",
-          date: "26/12/2011",
+          date: "26/12/2016",
           hour: "15:22",
-          description: "Entregue",
-          receiver: "",
-          document: "",
+          description: "Objeto entregue ao destinatário",
+          receiver: "?",
+          document: "?",
           comment: "?",
           place: "AC CENTRAL DE SAO PAULO",
           code: "01009972",
@@ -37,15 +32,15 @@ describe Correios::SRO::Parser do
         "SX104110463BR" => {
           type: "BDE",
           status: "01",
-          date: "08/12/2011",
-          hour: "09:30",
-          description: "Entregue",
-          receiver: "",
-          document: "",
-          comment: "",
-          place: "CEE JUNDIAI",
-          code: "13211970",
-          city: "JUNDIAI",
+          date: "26/12/2016",
+          hour: "15:22",
+          description: "Objeto entregue ao destinatário",
+          receiver: nil,
+          document: nil,
+          comment: nil,
+          place: "AC CENTRAL DE SAO PAULO",
+          code: "01009972",
+          city: "SAO PAULO",
           state: "SP",
           sto: "74654209"
         },
@@ -65,7 +60,7 @@ describe Correios::SRO::Parser do
       { "SI047624825BR" => {
           place: "CTE VILA MARIA",
           code: "02170975",
-          city: "SAO PAULO",
+          city: "Sao Paulo",
           neighborhood: "PQ NOVO MUNDO",
           state: "SP"
         },

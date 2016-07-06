@@ -4,9 +4,7 @@ require 'uri'
 module Correios
   module SRO
     class WebService
-      URL = "http://websro.correios.com.br/sro_bin/sroii_xml.eventos"
-      QUERY_TYPES =  { list: "L", range: "F" }
-      RESULT_MODES = { all:  "T", last:  "U" }
+      URL = "http://webservice.correios.com.br:80/service/rastro"
 
       def initialize(tracker)
         @uri = URI.parse(URL)
@@ -20,9 +18,10 @@ module Correios
         Correios::SRO.log_request request, @uri.to_s
 
         response = http.request(request)
+
         Correios::SRO.log_response response
 
-        response.body
+        response.body.force_encoding('utf-8')
       end
 
       private
@@ -35,18 +34,14 @@ module Correios
 
       def build_request
         request = Net::HTTP::Post.new(@uri.path)
-        request.set_form_data(request_params)
+        request.content_type = 'text/xml;charset=UTF-8'
+        request.add_field("Accept-Encoding", "UTF-8")
+        request.body = request_body
         request
       end
 
-      def request_params
-        {
-          Usuario: @tracker.user,
-          Senha: @tracker.password,
-          Tipo: QUERY_TYPES[@tracker.query_type],
-          Resultado: RESULT_MODES[@tracker.result_mode],
-          Objetos: @tracker.object_numbers.join
-        }
+      def request_body
+        RequestBuilder.new(@tracker).build_xml
       end
     end
   end

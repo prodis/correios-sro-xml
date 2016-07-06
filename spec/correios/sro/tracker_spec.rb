@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Correios::SRO::Tracker do
+
   describe ".new" do
     it "creates with default values" do
       expect(subject.query_type).to eql :list
@@ -58,7 +59,7 @@ describe Correios::SRO::Tracker do
     end
 
     let(:subject)  { Correios::SRO::Tracker.new(user: "PRODIS", password: "pim321") }
-    let(:response) { "" }
+
     before { Correios::SRO::WebService.any_instance.stub(:request!).and_return(response) }
 
     context "to many objects" do
@@ -84,10 +85,10 @@ describe Correios::SRO::Tracker do
         expect(objects.size).to eql 2
 
         expect(objects["SI047624825BR"].number).to eql "SI047624825BR"
-        expect(objects["SI047624825BR"].events.first.description).to eql "Entregue"
+        expect(objects["SI047624825BR"].events.first.description).to eql "Objeto entregue ao destinatário"
 
         expect(objects["SX104110463BR"].number).to eql "SX104110463BR"
-        expect(objects["SX104110463BR"].events.first.description).to eql "Entregue"
+        expect(objects["SX104110463BR"].events.first.description).to eql "Objeto entregue ao destinatário"
       end
 
       context "when only one object found" do
@@ -103,7 +104,7 @@ describe Correios::SRO::Tracker do
 
           expect(objects.size).to eql 1
           expect(objects["SI047624825BR"].number).to eql "SI047624825BR"
-          expect(objects["SI047624825BR"].events.first.description).to eql "Entregue"
+          expect(objects["SI047624825BR"].events.first.description).to eql "Objeto entregue ao destinatário"
         end
 
         it "returns nil in object not found" do
@@ -115,6 +116,7 @@ describe Correios::SRO::Tracker do
 
     context "to one object" do
       let(:response) { Fixture.load :sro_one_object }
+      let(:object_number) { "SI047624825BR" }
 
       it "sets object number" do
         subject.get("SI047624825BR")
@@ -125,7 +127,7 @@ describe Correios::SRO::Tracker do
       it "returns only one object" do
         object = subject.get("SI047624825BR")
         expect(object.number).to eql "SI047624825BR"
-        expect(object.events.first.description).to eql "Entregue"
+        expect(object.events.first.description).to eql "Objeto entregue ao destinatário"
       end
 
       context "when object not found" do

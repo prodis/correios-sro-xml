@@ -1,11 +1,11 @@
 module Correios
   module SRO
     class Tracker
-      attr_accessor :user, :password
-      attr_accessor :query_type, :result_mode
+
+      attr_accessor :user, :password, :query_type, :result_mode, :language
       attr_reader :object_numbers
 
-      DEFAULT_OPTIONS = { query_type: :list, result_mode: :last }.freeze
+      DEFAULT_OPTIONS = { query_type: :list, result_mode: :last, language: :pt }.freeze
 
       def initialize(options = {})
         DEFAULT_OPTIONS.merge(options).each do |attr, value|
