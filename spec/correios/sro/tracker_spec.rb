@@ -1,3 +1,4 @@
+# encoding: UTF-8
 require 'spec_helper'
 
 describe Correios::SRO::Tracker do
@@ -91,25 +92,25 @@ describe Correios::SRO::Tracker do
         expect(objects["SX104110463BR"].events.first.description).to eql "Objeto entregue ao destinatário"
       end
 
-      context "when only one object found" do
-        let(:response) { Fixture.load :sro_one_object }
+      context "when one object was not found" do
+        let(:response) { Fixture.load :sro_many_objects_including_not_found }
 
         it "returns a Hash" do
-          objects = subject.get("SI047624825BR", "SX104110463BR")
+          objects = subject.get("INVALID", "SI047624825BR", "SX104110463BR")
           expect(objects).to be_an_instance_of Hash
         end
 
-        it "returns the object found" do
-          objects = subject.get("SI047624825BR", "SX104110463BR")
+        it "returns objects found" do
+          objects = subject.get("INVALID", "SI047624825BR", "SX104110463BR")
 
-          expect(objects.size).to eql 1
+          expect(objects.size).to eql 2
           expect(objects["SI047624825BR"].number).to eql "SI047624825BR"
-          expect(objects["SI047624825BR"].events.first.description).to eql "Objeto entregue ao destinatário"
+          expect(objects["SX104110463BR"].number).to eql "SX104110463BR"
         end
 
         it "returns nil in object not found" do
-          objects = subject.get("SI047624825BR", "SX104110463BR")
-          expect(objects["SX104110463BR"]).to be_nil
+          objects = subject.get("INVALID", "SI047624825BR", "SX104110463BR")
+          expect(objects["INVALID"]).to be_nil
         end
       end
     end

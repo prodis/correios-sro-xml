@@ -5,7 +5,8 @@ class Fixture
       when :sro_one_object,
            :sro_many_objects,
            :sro_many_objects_international,
-           :sro_not_found
+           :sro_not_found,
+           :sro_many_objects_including_not_found
         read_file_for name
       else
         raise ArgumentError, "Fixture '#{name}' not found."
