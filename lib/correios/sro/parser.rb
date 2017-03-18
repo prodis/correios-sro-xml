@@ -8,8 +8,7 @@ module Correios
 
         Nokogiri::XML(xml).xpath("//objeto").each do |element|
           object = Correios::SRO::Object.parse(element.to_xml)
-          return objects if object.has_error?
-          objects[object.number] = object
+          objects[object.number] = object unless object.has_error?
         end
 
         objects

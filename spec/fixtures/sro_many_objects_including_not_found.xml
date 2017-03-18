@@ -1,0 +1,65 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header>
+      <X-OPNET-Transaction-Trace:X-OPNET-Transaction-Trace xmlns:X-OPNET-Transaction-Trace="http://opnet.com">pid=156890,requestid=c247ab15ed0f0c3c471944e9d23b376ac82bcc5311d0d89e</X-OPNET-Transaction-Trace:X-OPNET-Transaction-Trace>
+   </soapenv:Header>
+   <soapenv:Body>
+      <ns2:buscaEventosListaResponse xmlns:ns2="http://resource.webservice.correios.com.br/">
+         <return>
+            <versao>2.0</versao>
+            <qtd>2</qtd>
+            <objeto>
+              <numero>INVALID</numero>
+              <erro>Objeto não encontrado na base de dados dos Correios.</erro>
+            </objeto>
+            <objeto>
+               <numero>SI047624825BR</numero>
+               <sigla>SI</sigla>
+               <nome>ENCOMENDA E-SEDEX</nome>
+               <categoria>E-SEDEX</categoria>
+               <evento>
+                  <tipo>DO</tipo>
+                  <status>01</status>
+                  <data>25/12/2016</data>
+                  <hora>06:54</hora>
+                  <descricao>Objeto encaminhado</descricao>
+                  <local>CTE SAUDE</local>
+                  <codigo>04293970</codigo>
+                  <cidade>Sao Paulo</cidade>
+                  <uf>SP</uf>
+                  <destino>
+                     <local>CTE VILA MARIA</local>
+                     <codigo>02170975</codigo>
+                     <cidade>Sao Paulo</cidade>
+                     <bairro>PQ NOVO MUNDO</bairro>
+                     <uf>SP</uf>
+                  </destino>
+               </evento>
+            </objeto>
+            <objeto>
+               <numero>SX104110463BR</numero>
+               <sigla>SX</sigla>
+               <nome>ENCOMENDA PAC</nome>
+               <categoria>ENCOMENDA PAC</categoria>
+               <evento>
+                  <tipo>DO</tipo>
+                  <status>01</status>
+                  <data>24/12/2016</data>
+                  <hora>13:32</hora>
+                  <descricao>Objeto encaminhado</descricao>
+                  <local>CTE BELO HORIZONTE/GCCAP</local>
+                  <codigo>31276989</codigo>
+                  <cidade>BELO HORIZONTE</cidade>
+                  <uf>MG</uf>
+                  <destino>
+                     <local>CTE CAMPINAS</local>
+                     <codigo>13050971</codigo>
+                     <cidade>VALINHOS</cidade>
+                     <bairro>MACUCO</bairro>
+                     <uf>SP</uf>
+                  </destino>
+               </evento>
+            </objeto>
+         </return>
+      </ns2:buscaEventosListaResponse>
+   </soapenv:Body>
+</soapenv:Envelope>

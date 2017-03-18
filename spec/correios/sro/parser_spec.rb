@@ -80,5 +80,34 @@ describe Correios::SRO::Parser do
         end
       end
     end
+
+    context "ignore not found numbers" do
+      let(:xml) { Fixture.load :sro_many_objects_including_not_found }
+
+      before { @objects = subject.objects(xml) }
+
+      { "SI047624825BR" => {
+          place: "CTE VILA MARIA",
+          code: "02170975",
+          city: "Sao Paulo",
+          neighborhood: "PQ NOVO MUNDO",
+          state: "SP"
+        },
+        "SX104110463BR" => {
+          place: "CTE CAMPINAS",
+          code: "13050971",
+          city: "VALINHOS",
+          neighborhood: "MACUCO",
+          state: "SP"
+        },
+      }.each do |number, destinations|
+        destinations.each do |attr, value|
+          it attr do
+            destination = @objects[number].events[0].destination
+            expect(destination.send(attr)).to eql value
+          end
+        end
+      end
+    end
   end
 end
